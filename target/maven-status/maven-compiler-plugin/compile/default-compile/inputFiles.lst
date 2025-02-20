@@ -1,5 +1,4 @@
 /Volumes/DiskName/Programming/calculator-spring-boot/src/main/java/edu/ntnu/idatt2105/App.java
-/Volumes/DiskName/Programming/calculator-spring-boot/src/main/java/edu/ntnu/idatt2105/Controller.java
-/Volumes/DiskName/Programming/calculator-spring-boot/src/main/java/edu/ntnu/idatt2105/components/Calculator.java
-/Volumes/DiskName/Programming/calculator-spring-boot/src/main/java/edu/ntnu/idatt2105/components/MathString.java
-/Volumes/DiskName/Programming/calculator-spring-boot/src/main/java/edu/ntnu/idatt2105/components/Validator.java
+/Volumes/DiskName/Programming/calculator-spring-boot/src/main/java/edu/ntnu/idatt2105/layers/CalculatorController.java
+/Volumes/DiskName/Programming/calculator-spring-boot/src/main/java/edu/ntnu/idatt2105/layers/CalculatorService.java
+/Volumes/DiskName/Programming/calculator-spring-boot/src/main/java/edu/ntnu/idatt2105/layers/Result.java

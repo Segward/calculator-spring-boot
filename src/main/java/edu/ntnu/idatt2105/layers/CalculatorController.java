@@ -11,14 +11,14 @@ public class CalculatorController {
   Logger logger = Logger.getLogger(CalculatorController.class.getName());
 
   @GetMapping("/calculate")
-  public Result calculate(@RequestParam String operation) {
+  public Result calculate(@RequestParam String equation) {
     try {
-      logger.info("Calculating operation: " + operation);
-      String result = CalculatorService.calculate(operation);
+      logger.info("Calculating operation: " + equation);
+      String result = CalculatorService.calculate(equation);
       logger.info("Result: " + result);
       return new Result(result);
     } catch (Exception e) {
-      throw new RuntimeException("Error calculating operation: " + operation, e);
+      throw new RuntimeException("Error calculating operation: " + equation, e);
     }
   }
 }

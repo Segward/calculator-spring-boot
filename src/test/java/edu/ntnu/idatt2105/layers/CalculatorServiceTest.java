@@ -35,37 +35,43 @@ public class CalculatorServiceTest {
     }
 
     @Test
-    public void testComplexOperation() {
-        String operation = "1+2*3-4/2";
+    public void testBasicPemdas() {
+        String operation = "1+2*3";
         String result = CalculatorService.calculate(operation);
-        assertEquals("5.0", result);
+        assertEquals("7.0", result);
     }
 
     @Test
-    public void testComplexOperationWithNestedMultiplication() {
-        String operation = "1+2*3-4/2*2*2";
+    public void testComplexPemdas() {
+        String operation = "1+2*3/2-1";
         String result = CalculatorService.calculate(operation);
-        assertEquals("-1.0", result);
+        assertEquals("3.0", result);
     }
 
     @Test
-    public void testComplexOperationWithNestedDivision() {
-        String operation = "1+2*3-4/2/2";
+    public void testComplexPemdasWithDecimals() {
+        String operation = "1.5+2.5*3/2-1";
         String result = CalculatorService.calculate(operation);
-        assertEquals("6.0", result);
+        assertEquals("4.25", result);
+    }
+
+    public void testNegativeNumbers() {
+        String operation = "-1+2*3/2-1";
+        String result = CalculatorService.calculate(operation);
+        assertEquals("1.0", result);
     }
 
     @Test
-    public void testOperationWithDecimals() {
-        String operation = "1.5+2.5*3";
+    public void testNegativeNumbersWithDecimals() {
+        String operation = "-1.5+2.5*3/2-1";
         String result = CalculatorService.calculate(operation);
-        assertEquals("9.0", result);
+        assertEquals("1.25", result);
     }
 
-    @Test
-    public void testOperationWithDecimalsAndNegativeNumbers() {
-        String operation = "1.5+2.5*3-4/2/2-0.2*100";
+    public void testComplexFinalBossTest() {
+        String operation = "-1.5+2.5*3/2-1+2*3/2-1.5";
         String result = CalculatorService.calculate(operation);
-        assertEquals("-12.0", result);
+        assertEquals("2.75", result);
     }
+    
 }

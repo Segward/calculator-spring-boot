@@ -54,4 +54,18 @@ public class CalculatorServiceTest {
         String result = CalculatorService.calculate(operation);
         assertEquals("6.0", result);
     }
+
+    @Test
+    public void testOperationWithDecimals() {
+        String operation = "1.5+2.5*3";
+        String result = CalculatorService.calculate(operation);
+        assertEquals("9.0", result);
+    }
+
+    @Test
+    public void testOperationWithDecimalsAndNegativeNumbers() {
+        String operation = "1.5+2.5*3-4/2/2-0.2*100";
+        String result = CalculatorService.calculate(operation);
+        assertEquals("-12.0", result);
+    }
 }

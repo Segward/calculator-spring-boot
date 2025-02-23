@@ -10,42 +10,42 @@ public class CalculatorServiceTest {
     public void testBasicAddition() {
         String operation = "1+1";
         String result = CalculatorService.calculate(operation);
-        assertEquals("2.0", result);
+        assertEquals("2", result);
     }
 
     @Test
     public void testBasicSubtraction() {
         String operation = "1-1";
         String result = CalculatorService.calculate(operation);
-        assertEquals("0.0", result);
+        assertEquals("0", result);
     }
 
     @Test
     public void testBasicMultiplication() {
         String operation = "2*2";
         String result = CalculatorService.calculate(operation);
-        assertEquals("4.0", result);
+        assertEquals("4", result);
     }
 
     @Test
     public void testBasicDivision() {
         String operation = "4/2";
         String result = CalculatorService.calculate(operation);
-        assertEquals("2.0", result);
+        assertEquals("2", result);
     }
 
     @Test
     public void testBasicPemdas() {
         String operation = "1+2*3";
         String result = CalculatorService.calculate(operation);
-        assertEquals("7.0", result);
+        assertEquals("7", result);
     }
 
     @Test
     public void testComplexPemdas() {
         String operation = "1+2*3/2-1";
         String result = CalculatorService.calculate(operation);
-        assertEquals("3.0", result);
+        assertEquals("3", result);
     }
 
     @Test
@@ -58,7 +58,7 @@ public class CalculatorServiceTest {
     public void testNegativeNumbers() {
         String operation = "-1+2*3/2-1";
         String result = CalculatorService.calculate(operation);
-        assertEquals("1.0", result);
+        assertEquals("1", result);
     }
 
     @Test

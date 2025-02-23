@@ -1,17 +1,16 @@
 package edu.ntnu.idatt2105.layers;
 
+import java.math.BigDecimal;
+import java.math.RoundingMode;
 import java.util.ArrayList;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 import java.util.stream.Collectors;
 import java.util.stream.Stream;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Service;
 
 @Service
 public class CalculatorService {
-  private static final Logger logger = LoggerFactory.getLogger(CalculatorService.class);
 
   private Matcher getSegmentMatcher(String equation) {
     Pattern segmentPattern = Pattern.compile("-?\\d+\\.\\d+|-?\\d+|[\\-*/]");
@@ -61,7 +60,8 @@ public class CalculatorService {
     for (String segment : segments) {
       result += Double.parseDouble(segment);
     }
-    return String.valueOf(result);
+    BigDecimal rounded = new BigDecimal(result).setScale(5, RoundingMode.HALF_UP);
+    return rounded.stripTrailingZeros().toPlainString();
   }
 
   public static String calculate(String equation) {

@@ -13,6 +13,9 @@ import org.springframework.web.bind.annotation.RestController;
 public class CalculatorController {
 
   @Autowired private CalculatorService service; // Dependency injection (DI) of CalculatorService
+  // Use DI instead of IoC (Inversion of Control) to make the code more testable, flexable, scalable
+  // and maintainable. IoC is a design principle where the control of objects is transferred to a
+  // container or framework
 
   Logger logger = Logger.getLogger(CalculatorController.class.getName());
 

@@ -19,7 +19,8 @@ public class CalculatorController {
       logger.info("Result: " + result);
       return new Result(result);
     } catch (Exception e) {
-      throw new RuntimeException("Error calculating operation: " + equation, e);
+      logger.severe("Error calculating operation: " + equation);
+      return new Result("Error");
     }
   }
 }

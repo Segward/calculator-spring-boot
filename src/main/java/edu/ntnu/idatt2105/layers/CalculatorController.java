@@ -7,14 +7,18 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
-@RestController
+@RestController // Convenience controller which automates controller and responsebody
+// @Controller Marks the class as a Spring MVC controller
 @CrossOrigin(origins = "http://localhost:5173")
 public class CalculatorController {
+
+  @Autowired private CalculatorService service; // Dependency injection (DI) of CalculatorService
+
   Logger logger = Logger.getLogger(CalculatorController.class.getName());
 
-  @Autowired private CalculatorService service;
-
   @GetMapping("/calculate")
+  // @ResponseBody annotation tells a controller that the object returned is automatically
+  // serialized into JSON and passed back into the HttpResponse object.
   public ResultModel calculate(@RequestParam String equation) {
     try {
       ResultModel result = service.calculate(equation);

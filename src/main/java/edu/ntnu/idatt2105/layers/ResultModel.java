@@ -1,5 +1,6 @@
 package edu.ntnu.idatt2105.layers;
 
+// Will automatically be converted to JSON by Spring Boot
 public class ResultModel {
   private String equation;
   private String result;

@@ -64,7 +64,8 @@ public class CalculatorService {
     return rounded.stripTrailingZeros().toPlainString();
   }
 
-  public static String calculate(String equation) {
-    return new CalculatorService().compute(equation);
+  public ResultModel calculate(String equation) {
+    String result = new CalculatorService().compute(equation);
+    return new ResultModel(equation, result);
   }
 }

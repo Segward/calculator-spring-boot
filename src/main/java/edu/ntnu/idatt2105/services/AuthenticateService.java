@@ -10,12 +10,12 @@ public class AuthenticateService {
 
   private SecurityConfig securityConfig = new SecurityConfig();
 
-  public AuthenticationResponse authenticate(AuthenticationRequest request) {
+  public AuthenticationResponse getToken(AuthenticationRequest request) {
     final String jwt = securityConfig.generateToken(request.getUsername());
     return new AuthenticationResponse(jwt);
   }
 
-  public boolean validate(AuthenticationRequest request, String jwt) {
+  public boolean getValidity(AuthenticationRequest request, String jwt) {
     return securityConfig.validateToken(jwt, request.getUsername());
   }
 }

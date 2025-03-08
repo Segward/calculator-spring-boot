@@ -16,15 +16,15 @@ public class AuthenticateController {
 
   @Autowired AuthenticateService authenticateService;
 
-  @RequestMapping(value = "/login", method = RequestMethod.POST)
+  @RequestMapping(value = "/token", method = RequestMethod.GET)
   public ResponseEntity<AuthenticationResponse> authenticate(
       @RequestBody AuthenticationRequest request) {
-    return ResponseEntity.ok(authenticateService.authenticate(request));
+    return ResponseEntity.ok(authenticateService.getToken(request));
   }
 
-  @RequestMapping(value = "/validate", method = RequestMethod.GET)
+  @RequestMapping(value = "/valid", method = RequestMethod.GET)
   public ResponseEntity<Boolean> verify(
       @RequestBody AuthenticationRequest request, @RequestBody String jwt) {
-    return ResponseEntity.ok(authenticateService.validate(request, jwt));
+    return ResponseEntity.ok(authenticateService.getValidity(request, jwt));
   }
 }

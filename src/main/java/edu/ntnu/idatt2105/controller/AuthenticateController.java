@@ -1,8 +1,8 @@
 package edu.ntnu.idatt2105.controller;
 
-import edu.ntnu.idatt2105.config.SecurityConfig;
 import edu.ntnu.idatt2105.model.AuthenticationRequest;
 import edu.ntnu.idatt2105.model.AuthenticationResponse;
+import edu.ntnu.idatt2105.services.AuthenticateService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -11,16 +11,20 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 
 @RestController
+@RequestMapping("/api/auth")
 public class AuthenticateController {
 
-  @Autowired SecurityConfig securityConfig;
+  @Autowired AuthenticateService authenticateService;
 
-  @RequestMapping(value = "/authenticate", method = RequestMethod.POST)
+  @RequestMapping(value = "/login", method = RequestMethod.POST)
   public ResponseEntity<AuthenticationResponse> authenticate(
-      @RequestBody AuthenticationRequest request) throws Exception {
-    final String jwt = securityConfig.generateToken(request.getUsername());
-    return ResponseEntity.ok(new AuthenticationResponse(jwt));
+      @RequestBody AuthenticationRequest request) {
+    return ResponseEntity.ok(authenticateService.authenticate(request));
   }
 
-
+  @RequestMapping(value = "/validate", method = RequestMethod.GET)
+  public ResponseEntity<Boolean> verify(
+      @RequestBody AuthenticationRequest request, @RequestBody String jwt) {
+    return ResponseEntity.ok(authenticateService.validate(request, jwt));
+  }
 }

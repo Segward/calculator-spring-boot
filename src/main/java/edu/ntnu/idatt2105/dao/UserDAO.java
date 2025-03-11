@@ -6,7 +6,7 @@ import java.sql.SQLException;
 
 public class UserDAO {
 
-  public static void create(String username, String password) {
+  public static void insert(String username, String password) {
     DatabaseProvider.executeQuery(
         "INSERT INTO users (username, password) VALUES ('" + username + "', '" + password + "');");
   }

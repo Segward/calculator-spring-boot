@@ -6,7 +6,6 @@
 /Volumes/DiskName/Programming/calculator-spring-boot/src/main/java/edu/ntnu/idatt2105/dao/DatabaseProvider.java
 /Volumes/DiskName/Programming/calculator-spring-boot/src/main/java/edu/ntnu/idatt2105/dao/HistoryDAO.java
 /Volumes/DiskName/Programming/calculator-spring-boot/src/main/java/edu/ntnu/idatt2105/dao/UserDAO.java
-/Volumes/DiskName/Programming/calculator-spring-boot/src/main/java/edu/ntnu/idatt2105/data/User.java
 /Volumes/DiskName/Programming/calculator-spring-boot/src/main/java/edu/ntnu/idatt2105/requests/AuthenticateRequest.java
 /Volumes/DiskName/Programming/calculator-spring-boot/src/main/java/edu/ntnu/idatt2105/requests/CalculateRequest.java
 /Volumes/DiskName/Programming/calculator-spring-boot/src/main/java/edu/ntnu/idatt2105/requests/HistoryRequest.java

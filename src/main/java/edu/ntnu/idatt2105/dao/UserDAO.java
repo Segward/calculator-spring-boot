@@ -23,6 +23,26 @@ public class UserDAO {
     return rs.getInt("id");
   }
 
+  public static byte[] getSalt(String username) throws SQLException {
+    ResultSet rs =
+        DatabaseProvider.executeQuery(
+            String.format("SELECT * FROM users WHERE username = '%s';", username));
+    if (rs == null || !rs.next()) {
+      return null;
+    }
+    return rs.getBytes("salt");
+  }
+
+  public static String getPassword(String username) throws SQLException {
+    ResultSet rs =
+        DatabaseProvider.executeQuery(
+            String.format("SELECT * FROM users WHERE username = '%s';", username));
+    if (rs == null || !rs.next()) {
+      return null;
+    }
+    return rs.getString("password");
+  }
+
   public static boolean exists(String username) throws SQLException {
     ResultSet rs =
         DatabaseProvider.executeQuery(

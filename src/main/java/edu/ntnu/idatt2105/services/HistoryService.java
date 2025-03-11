@@ -15,7 +15,7 @@ public class HistoryService {
     String username = SecurityConfig.extractUsername(request.getJwt());
     boolean exists = UserDAO.exists(username);
     if (!exists) {
-      return new HistoryResponse(new ArrayList<>());
+      throw new Exception("User does not exist");
     }
     int userId = UserDAO.getUserId(username);
     ArrayList<String> history = HistoryDAO.fetch(userId);

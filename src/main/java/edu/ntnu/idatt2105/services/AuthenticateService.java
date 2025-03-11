@@ -13,7 +13,14 @@ public class AuthenticateService {
     boolean exists = UserDAO.exists(request.getUsername());
     if (!exists) {
       byte[] salt = SecurityConfig.generateSalt();
-      UserDAO.insert(request.getUsername(), request.getPassword(), salt);
+      String hashedPassword = SecurityConfig.hashPassword(request.getPassword(), salt);
+      UserDAO.insert(request.getUsername(), hashedPassword, salt);
+    }
+    byte[] salt = UserDAO.getSalt(request.getUsername());
+    String hashedPassword = UserDAO.getPassword(request.getUsername());
+    boolean valid = SecurityConfig.verifyPassword(request.getPassword(), salt, hashedPassword);
+    if (!valid) {
+      throw new Exception("Invalid password");
     }
     String jwt = SecurityConfig.generateToken(request.getUsername());
     return new AuthenticateResponse(jwt);

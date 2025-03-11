@@ -23,6 +23,13 @@
 
     <dependencies>
 
+        <!-- MySQL JDBC Driver -->
+        <dependency>
+            <groupId>com.mysql</groupId>
+            <artifactId>mysql-connector-j</artifactId>
+            <version>8.0.32</version>
+        </dependency>
+
         <!-- JWT dependency -->
         <dependency>
             <groupId>io.jsonwebtoken</groupId>

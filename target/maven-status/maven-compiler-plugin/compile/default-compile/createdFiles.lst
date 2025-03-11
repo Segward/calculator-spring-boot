@@ -15,4 +15,3 @@ edu/ntnu/idatt2105/requests/CalculateRequest.class
 edu/ntnu/idatt2105/requests/HistoryRequest.class
 edu/ntnu/idatt2105/responses/HistoryResponse.class
 edu/ntnu/idatt2105/controller/AuthenticateController.class
-edu/ntnu/idatt2105/data/User.class

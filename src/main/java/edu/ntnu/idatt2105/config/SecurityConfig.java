@@ -58,13 +58,13 @@ public class SecurityConfig {
     return extractUsername(token).equals(username) && !isTokenExpired(token);
   }
 
-  public byte[] generateSalt() {
+  public static byte[] generateSalt() {
     byte[] salt = new byte[16];
     new SecureRandom().nextBytes(salt);
     return salt;
   }
 
-  public String hashPassword(String password, byte[] salt) {
+  public static String hashPassword(String password, byte[] salt) {
     try {
       MessageDigest md = MessageDigest.getInstance("SHA-512");
       md.update(salt);
@@ -76,7 +76,7 @@ public class SecurityConfig {
     }
   }
 
-  public boolean verifyPassword(String password, byte[] salt, String hashedPassword) {
+  public static boolean verifyPassword(String password, byte[] salt, String hashedPassword) {
     return hashPassword(password, salt).equals(hashedPassword);
   }
 }

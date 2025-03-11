@@ -1,10 +1,10 @@
 package edu.ntnu.idatt2105.model;
 
-public class AuthenticationResponse {
+public class AuthenticateResponse {
 
   private final String jwt;
 
-  public AuthenticationResponse(String jwt) {
+  public AuthenticateResponse(String jwt) {
     this.jwt = jwt;
   }
 

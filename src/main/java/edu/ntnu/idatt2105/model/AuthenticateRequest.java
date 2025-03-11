@@ -1,11 +1,11 @@
 package edu.ntnu.idatt2105.model;
 
-public class AuthenticationRequest {
+public class AuthenticateRequest {
 
   private String username;
   private String password;
 
-  public AuthenticationRequest(String username, String password) {
+  public AuthenticateRequest(String username, String password) {
     this.username = username;
     this.password = password;
   }

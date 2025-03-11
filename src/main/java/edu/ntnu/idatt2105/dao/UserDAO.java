@@ -14,17 +14,10 @@ public class UserDAO {
     DatabaseProvider.executeQuery(query);
   }
 
-  public static void delete(String username) {
-    DatabaseProvider.executeQuery(
-        String.format("DELETE FROM users WHERE username = '%s';", username));
-  }
-
-  public static User extract(String username, String password) throws SQLException {
+  public static User extract(String username) throws SQLException {
     ResultSet rs =
         DatabaseProvider.executeQuery(
-            String.format(
-                "SELECT * FROM users WHERE username = '%s' AND password = '%s';",
-                username, password));
+            String.format("SELECT * FROM users WHERE username = '%s';", username));
     if (rs == null || !rs.next()) {
       return null;
     }

@@ -10,7 +10,7 @@ public class HistoryDAO {
 
   public static void insert(String username, String action) throws SQLException {
     String query = "INSERT INTO history (username, action) VALUES (?, ?)";
-    try (Connection conn = DatabaseProvider.getConnection();
+    try (Connection conn = DBConnection.getConnection();
         PreparedStatement stmt = conn.prepareStatement(query)) {
       stmt.setString(1, username);
       stmt.setString(2, action);
@@ -21,7 +21,7 @@ public class HistoryDAO {
   public static ArrayList<String> fetch(int userId) throws SQLException {
     String query = "SELECT * FROM history WHERE userId = ? ORDER BY created_at DESC";
     ArrayList<String> history = new ArrayList<>();
-    try (Connection conn = DatabaseProvider.getConnection();
+    try (Connection conn = DBConnection.getConnection();
         PreparedStatement stmt = conn.prepareStatement(query)) {
       stmt.setInt(1, userId);
       try (ResultSet rs = stmt.executeQuery()) {
@@ -35,7 +35,7 @@ public class HistoryDAO {
 
   public static boolean exists(int userId) throws SQLException {
     String query = "SELECT * FROM history WHERE userId = ?";
-    try (Connection conn = DatabaseProvider.getConnection();
+    try (Connection conn = DBConnection.getConnection();
         PreparedStatement stmt = conn.prepareStatement(query)) {
       stmt.setInt(1, userId);
       try (ResultSet rs = stmt.executeQuery()) {

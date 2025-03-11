@@ -9,7 +9,7 @@ public class UserDAO {
 
   public static boolean exists(String username) throws SQLException {
     String query = "SELECT COUNT(*) FROM users WHERE username = ?";
-    try (Connection conn = DatabaseProvider.getConnection();
+    try (Connection conn = DBConnection.getConnection();
         PreparedStatement stmt = conn.prepareStatement(query)) {
       stmt.setString(1, username);
       try (ResultSet rs = stmt.executeQuery()) {
@@ -23,7 +23,7 @@ public class UserDAO {
 
   public static byte[] getSalt(String username) throws SQLException {
     String query = "SELECT salt FROM users WHERE username = ?";
-    try (Connection conn = DatabaseProvider.getConnection();
+    try (Connection conn = DBConnection.getConnection();
         PreparedStatement stmt = conn.prepareStatement(query)) {
       stmt.setString(1, username);
       try (ResultSet rs = stmt.executeQuery()) {
@@ -37,7 +37,7 @@ public class UserDAO {
 
   public static String getPassword(String username) throws SQLException {
     String query = "SELECT password FROM users WHERE username = ?";
-    try (Connection conn = DatabaseProvider.getConnection();
+    try (Connection conn = DBConnection.getConnection();
         PreparedStatement stmt = conn.prepareStatement(query)) {
       stmt.setString(1, username);
       try (ResultSet rs = stmt.executeQuery()) {
@@ -51,7 +51,7 @@ public class UserDAO {
 
   public static int getUserId(String username) throws SQLException {
     String query = "SELECT id FROM users WHERE username = ?";
-    try (Connection conn = DatabaseProvider.getConnection();
+    try (Connection conn = DBConnection.getConnection();
         PreparedStatement stmt = conn.prepareStatement(query)) {
       stmt.setString(1, username);
       try (ResultSet rs = stmt.executeQuery()) {
@@ -66,7 +66,7 @@ public class UserDAO {
   public static void insert(String username, String hashedPassword, byte[] salt)
       throws SQLException {
     String query = "INSERT INTO users (username, password, salt) VALUES (?, ?, ?)";
-    try (Connection conn = DatabaseProvider.getConnection();
+    try (Connection conn = DBConnection.getConnection();
         PreparedStatement stmt = conn.prepareStatement(query)) {
       stmt.setString(1, username);
       stmt.setString(2, hashedPassword);

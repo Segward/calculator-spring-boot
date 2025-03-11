@@ -6,18 +6,25 @@ import java.sql.SQLException;
 
 public class UserDAO {
 
-  public static void insert(String username, String password) {
-    DatabaseProvider.executeQuery(
-        "INSERT INTO users (username, password) VALUES ('" + username + "', '" + password + "');");
+  public static void insert(String username, String password, byte[] salt) {
+    String query =
+        String.format(
+            "INSERT INTO users (username, password, salt) VALUES ('%s','%s','%s');",
+            username, password, salt);
+    DatabaseProvider.executeQuery(query);
   }
 
   public static void delete(String username) {
-    DatabaseProvider.executeQuery("DELETE FROM users WHERE username = '" + username + "';");
+    DatabaseProvider.executeQuery(
+        String.format("DELETE FROM users WHERE username = '%s';", username));
   }
 
   public static User extract(String username, String password) throws SQLException {
     ResultSet rs =
-        DatabaseProvider.executeQuery("SELECT * FROM users WHERE username = '" + username + "';");
+        DatabaseProvider.executeQuery(
+            String.format(
+                "SELECT * FROM users WHERE username = '%s' AND password = '%s';",
+                username, password));
     if (rs == null || !rs.next()) {
       return null;
     }

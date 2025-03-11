@@ -12,22 +12,22 @@ public class HistoryDAO {
             "INSERT INTO history (username, action) VALUES ('%s','%s');", username, action));
   }
 
-  public static void delete(String username) {
-    DatabaseProvider.executeQuery(
-        String.format("DELETE FROM history WHERE username = '%s';", username));
-  }
-
-  public static ArrayList<String> extract(String username) throws SQLException {
+  public static ArrayList<String> fetch(int userId) throws SQLException {
     ResultSet rs =
         DatabaseProvider.executeQuery(
-            String.format("SELECT * FROM history WHERE username = '%s';", username));
-    if (rs == null || !rs.next()) {
-      return null;
-    }
+            String.format(
+                "SELECT * FROM history WHERE userId = %d ORDER BY created_at DESC;", userId));
     ArrayList<String> history = new ArrayList<>();
     while (rs.next()) {
       history.add(rs.getString("action"));
     }
     return history;
+  }
+
+  public static boolean exists(int userId) throws SQLException {
+    ResultSet rs =
+        DatabaseProvider.executeQuery(
+            String.format("SELECT * FROM history WHERE userId = %d;", userId));
+    return rs != null && rs.next();
   }
 }

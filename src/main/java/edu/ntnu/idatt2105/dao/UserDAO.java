@@ -1,6 +1,5 @@
 package edu.ntnu.idatt2105.dao;
 
-import edu.ntnu.idatt2105.data.User;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 
@@ -14,16 +13,20 @@ public class UserDAO {
     DatabaseProvider.executeQuery(query);
   }
 
-  public static User extract(String username) throws SQLException {
+  public static int getUserId(String username) throws SQLException {
     ResultSet rs =
         DatabaseProvider.executeQuery(
             String.format("SELECT * FROM users WHERE username = '%s';", username));
     if (rs == null || !rs.next()) {
-      return null;
+      return -1;
     }
-    String extractedUsername = rs.getString("username");
-    String extractedPassword = rs.getString("password");
-    byte[] extractedSalt = rs.getBytes("salt");
-    return new User(extractedUsername, extractedPassword, extractedSalt);
+    return rs.getInt("id");
+  }
+
+  public static boolean exists(String username) throws SQLException {
+    ResultSet rs =
+        DatabaseProvider.executeQuery(
+            String.format("SELECT * FROM users WHERE username = '%s';", username));
+    return rs != null && rs.next();
   }
 }

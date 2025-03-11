@@ -1,7 +1,7 @@
 package edu.ntnu.idatt2105.controller;
 
-import edu.ntnu.idatt2105.model.AuthenticateRequest;
-import edu.ntnu.idatt2105.model.AuthenticateResponse;
+import edu.ntnu.idatt2105.requests.AuthenticateRequest;
+import edu.ntnu.idatt2105.responses.AuthenticateResponse;
 import edu.ntnu.idatt2105.services.AuthenticateService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
@@ -21,17 +21,11 @@ public class AuthenticateController {
   @RequestMapping(value = "/token", method = RequestMethod.GET)
   public ResponseEntity<AuthenticateResponse> authenticate(
       @RequestBody AuthenticateRequest request) {
-    return ResponseEntity.ok(authenticateService.getToken(request));
-  }
-
-  @RequestMapping(value = "/valid", method = RequestMethod.GET)
-  public ResponseEntity<Boolean> verify(
-      @RequestBody AuthenticateRequest request, @RequestBody String jwt) {
-    return ResponseEntity.ok(authenticateService.getValidity(request, jwt));
-  }
-
-  @RequestMapping(value = "/register", method = RequestMethod.POST)
-  public ResponseEntity<AuthenticateResponse> register(@RequestBody AuthenticateRequest request) {
-    return ResponseEntity.ok(authenticateService.getToken(request));
+    try {
+      AuthenticateResponse response = authenticateService.getToken(request);
+      return ResponseEntity.ok(response);
+    } catch (Exception e) {
+      return ResponseEntity.badRequest().build();
+    }
   }
 }

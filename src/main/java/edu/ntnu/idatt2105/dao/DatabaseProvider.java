@@ -2,7 +2,6 @@ package edu.ntnu.idatt2105.dao;
 
 import java.sql.Connection;
 import java.sql.DriverManager;
-import java.sql.ResultSet;
 import java.sql.SQLException;
 
 public class DatabaseProvider {
@@ -25,15 +24,6 @@ public class DatabaseProvider {
       connection.close();
     } catch (SQLException e) {
       e.printStackTrace();
-    }
-  }
-
-  public static ResultSet executeQuery(String query) {
-    try (Connection connection = getConnection()) {
-      return connection.createStatement().executeQuery(query);
-    } catch (SQLException e) {
-      e.printStackTrace();
-      return null;
     }
   }
 }

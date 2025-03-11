@@ -16,13 +16,6 @@ CREATE TABLE history (
     FOREIGN KEY (user_id) REFERENCES users(id)
 );
 
--- Insert users with auto-incrementing IDs
-INSERT INTO users (username, password, salt) 
-VALUES ('admin', 'admin', RANDOM_BYTES(16));
-
-INSERT INTO users (username, password, salt) 
-VALUES ('user', 'user', RANDOM_BYTES(16));
-
 -- Insert history records
 INSERT INTO history (user_id, action) 
 SELECT id, 'login' FROM users WHERE username = 'admin';

@@ -64,19 +64,16 @@ public class SecurityConfig {
     return salt;
   }
 
-  public static String hashPassword(String password, byte[] salt) {
-    try {
-      MessageDigest md = MessageDigest.getInstance("SHA-512");
-      md.update(salt);
-      byte[] hashedPassword = md.digest(password.getBytes());
-      return Base64.getEncoder().encodeToString(hashedPassword);
-    } catch (Exception e) {
-      System.out.println("Error hashing password: " + e.getMessage());
-      return password;
-    }
+  public static String hashPassword(String password, byte[] salt) throws Exception {
+    MessageDigest md = MessageDigest.getInstance("SHA-256");
+    md.update(salt);
+    byte[] hashedPassword = md.digest(password.getBytes());
+    return Base64.getEncoder().encodeToString(hashedPassword);
   }
 
-  public static boolean verifyPassword(String password, byte[] salt, String hashedPassword) {
-    return hashPassword(password, salt).equals(hashedPassword);
+  public static boolean verifyPassword(String password, byte[] salt, String hashedPassword)
+      throws Exception {
+    String hashedAttempt = hashPassword(password, salt);
+    return hashedAttempt.equals(hashedPassword);
   }
 }

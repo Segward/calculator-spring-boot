@@ -1,6 +1,5 @@
 package edu.ntnu.idatt2105.controller;
 
-import edu.ntnu.idatt2105.requests.CalculateRequest;
 import edu.ntnu.idatt2105.responses.CalculateResponse;
 import edu.ntnu.idatt2105.services.CalculateService;
 import java.util.logging.Logger;
@@ -9,6 +8,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 @RestController
@@ -20,9 +20,10 @@ public class CalculateController {
   Logger logger = Logger.getLogger(CalculateController.class.getName());
 
   @GetMapping("/calculate")
-  public ResponseEntity<CalculateResponse> calculate(@RequestBody CalculateRequest request) {
+  public ResponseEntity<CalculateResponse> calculate(
+      @RequestParam String jwt, @RequestBody String equation) {
     try {
-      CalculateResponse response = calculateService.calculate(request);
+      CalculateResponse response = calculateService.calculate(jwt, equation);
       logger.info("Calculation performed: " + response.getResult());
       return ResponseEntity.ok(response);
     } catch (Exception e) {

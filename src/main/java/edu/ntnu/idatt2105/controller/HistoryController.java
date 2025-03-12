@@ -10,6 +10,7 @@ import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 @RestController
@@ -22,9 +23,9 @@ public class HistoryController {
   Logger logger = Logger.getLogger(HistoryController.class.getName());
 
   @GetMapping("/fetch")
-  public ResponseEntity<HistoryResponse> calculate(@RequestBody HistoryRequest request) {
+  public ResponseEntity<HistoryResponse> calculate(@RequestParam String jwt) {
     try {
-      HistoryResponse response = historyService.fetch(request);
+      HistoryResponse response = historyService.fetch(jwt);
       logger.info("History fetched: " + response.getHistory());
       return ResponseEntity.ok(response);
     } catch (Exception e) {

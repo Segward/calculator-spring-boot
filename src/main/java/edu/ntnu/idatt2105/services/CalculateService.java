@@ -1,6 +1,5 @@
 package edu.ntnu.idatt2105.services;
 
-import edu.ntnu.idatt2105.requests.CalculateRequest;
 import edu.ntnu.idatt2105.responses.CalculateResponse;
 import java.math.BigDecimal;
 import java.math.RoundingMode;
@@ -66,8 +65,8 @@ public class CalculateService {
     return rounded.stripTrailingZeros().toPlainString();
   }
 
-  public CalculateResponse calculate(CalculateRequest request) {
-    String result = compute(request.getAction());
+  public CalculateResponse calculate(String jwt, String equation) {
+    String result = compute(equation);
     return new CalculateResponse(result);
   }
 }

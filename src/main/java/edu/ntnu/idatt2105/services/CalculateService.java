@@ -1,6 +1,10 @@
 package edu.ntnu.idatt2105.services;
 
-import edu.ntnu.idatt2105.responses.CalculateResponse;
+import edu.ntnu.idatt2105.config.SecurityConfig;
+import edu.ntnu.idatt2105.dao.HistoryDAO;
+import edu.ntnu.idatt2105.dao.UserDAO;
+import edu.ntnu.idatt2105.models.CalculateResponse;
+
 import java.math.BigDecimal;
 import java.math.RoundingMode;
 import java.util.ArrayList;
@@ -65,8 +69,11 @@ public class CalculateService {
     return rounded.stripTrailingZeros().toPlainString();
   }
 
-  public CalculateResponse calculate(String jwt, String equation) {
+  public CalculateResponse calculate(String jwt, String equation) throws Exception {
     String result = compute(equation);
+    String username = SecurityConfig.extractUsername(jwt);
+    int userId = UserDAO.getUserId(username);
+    HistoryDAO.insert(userId, equation, result);
     return new CalculateResponse(result);
   }
 }

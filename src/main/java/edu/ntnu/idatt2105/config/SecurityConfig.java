@@ -15,7 +15,7 @@ import org.springframework.stereotype.Component;
 @Component
 public class SecurityConfig {
 
-  private static final long EXPIRY = 1000 * 60;
+  private static final long EXPIRY = 1000 * 60 * 5; // 5 minutes
   private static final String SECRET = "secret";
 
   public static Claims extractAllClaims(String token) {

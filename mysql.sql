@@ -11,20 +11,8 @@ CREATE TABLE users (
 CREATE TABLE history (
     id INT AUTO_INCREMENT PRIMARY KEY,
     user_id INT NOT NULL,
-    action VARCHAR(255) NOT NULL,
+    equation VARCHAR(255) NOT NULL,
+    result VARCHAR(255) NOT NULL,
     created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
     FOREIGN KEY (user_id) REFERENCES users(id)
 );
-
--- Insert history records
-INSERT INTO history (user_id, action) 
-SELECT id, 'login' FROM users WHERE username = 'admin';
-
-INSERT INTO history (user_id, action) 
-SELECT id, 'logout' FROM users WHERE username = 'admin';
-
-INSERT INTO history (user_id, action) 
-SELECT id, 'login' FROM users WHERE username = 'user';
-
-INSERT INTO history (user_id, action) 
-SELECT id, 'logout' FROM users WHERE username = 'user';

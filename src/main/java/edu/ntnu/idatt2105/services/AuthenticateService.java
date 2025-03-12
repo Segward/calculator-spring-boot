@@ -2,7 +2,8 @@ package edu.ntnu.idatt2105.services;
 
 import edu.ntnu.idatt2105.config.SecurityConfig;
 import edu.ntnu.idatt2105.dao.UserDAO;
-import edu.ntnu.idatt2105.responses.AuthenticateResponse;
+import edu.ntnu.idatt2105.models.AuthenticateResponse;
+
 import org.springframework.stereotype.Service;
 
 @Service

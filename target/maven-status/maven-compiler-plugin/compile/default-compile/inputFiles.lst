@@ -6,12 +6,9 @@
 /Volumes/DiskName/Programming/calculator-spring-boot/src/main/java/edu/ntnu/idatt2105/dao/DBConnection.java
 /Volumes/DiskName/Programming/calculator-spring-boot/src/main/java/edu/ntnu/idatt2105/dao/HistoryDAO.java
 /Volumes/DiskName/Programming/calculator-spring-boot/src/main/java/edu/ntnu/idatt2105/dao/UserDAO.java
-/Volumes/DiskName/Programming/calculator-spring-boot/src/main/java/edu/ntnu/idatt2105/requests/AuthenticateRequest.java
-/Volumes/DiskName/Programming/calculator-spring-boot/src/main/java/edu/ntnu/idatt2105/requests/CalculateRequest.java
-/Volumes/DiskName/Programming/calculator-spring-boot/src/main/java/edu/ntnu/idatt2105/requests/HistoryRequest.java
-/Volumes/DiskName/Programming/calculator-spring-boot/src/main/java/edu/ntnu/idatt2105/responses/AuthenticateResponse.java
-/Volumes/DiskName/Programming/calculator-spring-boot/src/main/java/edu/ntnu/idatt2105/responses/CalculateResponse.java
-/Volumes/DiskName/Programming/calculator-spring-boot/src/main/java/edu/ntnu/idatt2105/responses/HistoryResponse.java
+/Volumes/DiskName/Programming/calculator-spring-boot/src/main/java/edu/ntnu/idatt2105/models/AuthenticateResponse.java
+/Volumes/DiskName/Programming/calculator-spring-boot/src/main/java/edu/ntnu/idatt2105/models/CalculateResponse.java
+/Volumes/DiskName/Programming/calculator-spring-boot/src/main/java/edu/ntnu/idatt2105/models/HistoryResponse.java
 /Volumes/DiskName/Programming/calculator-spring-boot/src/main/java/edu/ntnu/idatt2105/services/AuthenticateService.java
 /Volumes/DiskName/Programming/calculator-spring-boot/src/main/java/edu/ntnu/idatt2105/services/CalculateService.java
 /Volumes/DiskName/Programming/calculator-spring-boot/src/main/java/edu/ntnu/idatt2105/services/HistoryService.java

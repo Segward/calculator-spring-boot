@@ -1,6 +1,7 @@
 package edu.ntnu.idatt2105.controller;
 
-import edu.ntnu.idatt2105.responses.CalculateResponse;
+import edu.ntnu.idatt2105.dao.HistoryDAO;
+import edu.ntnu.idatt2105.models.CalculateResponse;
 import edu.ntnu.idatt2105.services.CalculateService;
 import java.util.logging.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -21,7 +22,7 @@ public class CalculateController {
 
   @GetMapping("/calculate")
   public ResponseEntity<CalculateResponse> calculate(
-      @RequestParam String jwt, @RequestBody String equation) {
+      @RequestParam String jwt, @RequestParam String equation) {
     try {
       CalculateResponse response = calculateService.calculate(jwt, equation);
       logger.info("Calculation performed: " + response.getResult());

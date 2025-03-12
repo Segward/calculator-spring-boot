@@ -20,7 +20,7 @@ public class HistoryDAO {
   }
 
   public static ArrayList<String> fetchEquations(int userId) throws SQLException {
-    String query = "SELECT * FROM history WHERE user_id = ? ORDER BY created_at DESC";
+    String query = "SELECT * FROM history WHERE user_id = ? ORDER BY created_at DESC LIMIT 10";
     ArrayList<String> history = new ArrayList<>();
     try (Connection conn = DBConnection.getConnection();
         PreparedStatement stmt = conn.prepareStatement(query)) {
@@ -35,7 +35,7 @@ public class HistoryDAO {
   }
 
   public static ArrayList<String> fetchResults(int userId) throws SQLException {
-    String query = "SELECT * FROM history WHERE user_id = ? ORDER BY created_at DESC";
+    String query = "SELECT * FROM history WHERE user_id = ? ORDER BY created_at DESC LIMIT 10";
     ArrayList<String> history = new ArrayList<>();
     try (Connection conn = DBConnection.getConnection();
         PreparedStatement stmt = conn.prepareStatement(query)) {

@@ -1,5 +1,6 @@
 /Volumes/DiskName/Programming/calculator-spring-boot/src/main/java/edu/ntnu/idatt2105/App.java
 /Volumes/DiskName/Programming/calculator-spring-boot/src/main/java/edu/ntnu/idatt2105/config/SecurityConfig.java
+/Volumes/DiskName/Programming/calculator-spring-boot/src/main/java/edu/ntnu/idatt2105/config/WebConfig.java
 /Volumes/DiskName/Programming/calculator-spring-boot/src/main/java/edu/ntnu/idatt2105/controller/AuthenticateController.java
 /Volumes/DiskName/Programming/calculator-spring-boot/src/main/java/edu/ntnu/idatt2105/controller/CalculateController.java
 /Volumes/DiskName/Programming/calculator-spring-boot/src/main/java/edu/ntnu/idatt2105/controller/ContactController.java

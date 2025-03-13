@@ -3,7 +3,6 @@ package edu.ntnu.idatt2105.services;
 import edu.ntnu.idatt2105.config.SecurityConfig;
 import edu.ntnu.idatt2105.dao.UserDAO;
 import edu.ntnu.idatt2105.models.AuthenticateResponse;
-
 import org.springframework.stereotype.Service;
 
 @Service
@@ -24,5 +23,10 @@ public class AuthenticateService {
     }
     String jwt = SecurityConfig.generateToken(username);
     return new AuthenticateResponse(jwt);
+  }
+
+  public Boolean validate(String jwt) throws Exception {
+    String username = SecurityConfig.extractUsername(jwt);
+    return SecurityConfig.validateToken(jwt, username);
   }
 }

@@ -9,6 +9,5 @@ edu/ntnu/idatt2105/services/HistoryService.class
 edu/ntnu/idatt2105/controller/HistoryController.class
 edu/ntnu/idatt2105/services/AuthenticateService.class
 edu/ntnu/idatt2105/dao/UserDAO.class
-edu/ntnu/idatt2105/models/AuthenticateResponse.class
 edu/ntnu/idatt2105/controller/AuthenticateController.class
 edu/ntnu/idatt2105/dao/DBConnection.class

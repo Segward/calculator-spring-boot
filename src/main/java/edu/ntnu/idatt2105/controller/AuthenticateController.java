@@ -1,6 +1,6 @@
 package edu.ntnu.idatt2105.controller;
 
-import edu.ntnu.idatt2105.models.AuthenticateResponse;
+import edu.ntnu.idatt2105.models.TokenResponse;
 import edu.ntnu.idatt2105.services.AuthenticateService;
 import java.util.logging.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -19,10 +19,10 @@ public class AuthenticateController {
   Logger logger = Logger.getLogger(AuthenticateController.class.getName());
 
   @GetMapping("/token")
-  public ResponseEntity<AuthenticateResponse> authenticate(
+  public ResponseEntity<TokenResponse> authenticate(
       @RequestParam String username, @RequestParam String password) {
     try {
-      AuthenticateResponse response = authenticateService.getToken(username, password);
+      TokenResponse response = authenticateService.getToken(username, password);
       logger.info("Token generated: " + response.getJwt());
       return ResponseEntity.ok(response);
     } catch (Exception e) {
@@ -33,10 +33,11 @@ public class AuthenticateController {
   @GetMapping("/validate")
   public ResponseEntity<Boolean> validate(@RequestParam String jwt) {
     try {
-      Boolean valid = authenticateService.validate(jwt);
-      logger.info("Token validated: " + valid);
+      boolean valid = authenticateService.validate(jwt);
+      logger.info("Token is valid: " + valid);
       return ResponseEntity.ok(valid);
     } catch (Exception e) {
+      logger.severe(e.getMessage());
       return ResponseEntity.badRequest().build();
     }
   }

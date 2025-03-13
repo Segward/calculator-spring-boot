@@ -2,13 +2,13 @@ package edu.ntnu.idatt2105.services;
 
 import edu.ntnu.idatt2105.config.SecurityConfig;
 import edu.ntnu.idatt2105.dao.UserDAO;
-import edu.ntnu.idatt2105.models.AuthenticateResponse;
+import edu.ntnu.idatt2105.models.TokenResponse;
 import org.springframework.stereotype.Service;
 
 @Service
 public class AuthenticateService {
 
-  public AuthenticateResponse getToken(String username, String password) throws Exception {
+  public TokenResponse getToken(String username, String password) throws Exception {
     boolean exists = UserDAO.exists(username);
     if (!exists) {
       byte[] salt = SecurityConfig.generateSalt();
@@ -22,11 +22,15 @@ public class AuthenticateService {
       throw new Exception("Invalid password");
     }
     String jwt = SecurityConfig.generateToken(username);
-    return new AuthenticateResponse(jwt);
+    return new TokenResponse(jwt);
   }
 
-  public Boolean validate(String jwt) throws Exception {
-    String username = SecurityConfig.extractUsername(jwt);
-    return SecurityConfig.validateToken(jwt, username);
+  public boolean validate(String jwt) {
+    try {
+      String username = SecurityConfig.extractUsername(jwt);
+      return SecurityConfig.validateToken(jwt, username);
+    } catch (Exception e) {
+      return false;
+    }
   }
 }

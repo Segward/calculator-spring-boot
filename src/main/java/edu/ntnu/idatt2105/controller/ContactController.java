@@ -28,6 +28,7 @@ public class ContactController {
       logger.info("Contact request received: " + name + " " + email + " " + message);
       return ResponseEntity.ok(true);
     } catch (Exception e) {
+      logger.severe(e.getMessage());
       return ResponseEntity.badRequest().build();
     }
   }

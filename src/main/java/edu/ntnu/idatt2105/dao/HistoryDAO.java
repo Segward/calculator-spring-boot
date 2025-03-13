@@ -19,12 +19,13 @@ public class HistoryDAO {
     }
   }
 
-  public static ArrayList<String> fetchEquations(int userId) throws SQLException {
-    String query = "SELECT * FROM history WHERE user_id = ? ORDER BY id DESC LIMIT 10";
+  public static ArrayList<String> fetchEquations(int userId, int count) throws SQLException {
+    String query = "SELECT * FROM history WHERE user_id = ? ORDER BY id DESC LIMIT ?";
     ArrayList<String> history = new ArrayList<>();
     try (Connection conn = DBConnection.getConnection();
         PreparedStatement stmt = conn.prepareStatement(query)) {
       stmt.setInt(1, userId);
+      stmt.setInt(2, count);
       try (ResultSet rs = stmt.executeQuery()) {
         while (rs.next()) {
           history.add(rs.getString("equation"));
@@ -34,12 +35,13 @@ public class HistoryDAO {
     return history;
   }
 
-  public static ArrayList<String> fetchResults(int userId) throws SQLException {
-    String query = "SELECT * FROM history WHERE user_id = ? ORDER BY id DESC LIMIT 10";
+  public static ArrayList<String> fetchResults(int userId, int count) throws SQLException {
+    String query = "SELECT * FROM history WHERE user_id = ? ORDER BY id DESC LIMIT ?";
     ArrayList<String> history = new ArrayList<>();
     try (Connection conn = DBConnection.getConnection();
         PreparedStatement stmt = conn.prepareStatement(query)) {
       stmt.setInt(1, userId);
+      stmt.setInt(2, count);
       try (ResultSet rs = stmt.executeQuery()) {
         while (rs.next()) {
           history.add(rs.getString("result"));

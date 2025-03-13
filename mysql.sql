@@ -1,7 +1,5 @@
-DROP TABLE IF EXISTS contact;
-
 DROP TABLE IF EXISTS history;
-
+DROP TABLE IF EXISTS contact;
 DROP TABLE IF EXISTS users;
 
 CREATE TABLE users (

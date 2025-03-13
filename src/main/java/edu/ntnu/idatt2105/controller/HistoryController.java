@@ -19,9 +19,9 @@ public class HistoryController {
   Logger logger = Logger.getLogger(HistoryController.class.getName());
 
   @GetMapping("/fetch")
-  public ResponseEntity<HistoryResponse> calculate(@RequestParam String jwt) {
+  public ResponseEntity<HistoryResponse> calculate(@RequestParam String jwt, @RequestParam int count) {
     try {
-      HistoryResponse response = historyService.fetch(jwt);
+      HistoryResponse response = historyService.fetch(jwt, count);
       logger.info("History fetched: " + response.getEquations() + " " + response.getResults());
       return ResponseEntity.ok(response);
     } catch (Exception e) {
